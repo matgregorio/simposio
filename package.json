@@ -1,0 +1,30 @@
+{
+  "name": "simposio",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo do sistema de simpósio acadêmico IF Sudeste MG – DPPG",
+  "scripts": {
+    "postinstall": "npm --prefix backend install && npm --prefix frontend install",
+    "prepare": "husky install",
+    "dev": "concurrently \"npm:dev:be\" \"npm:dev:fe\"",
+    "dev:be": "npm --prefix backend run dev",
+    "dev:fe": "npm --prefix frontend run dev",
+    "test": "npm --prefix backend test && npm --prefix frontend test",
+    "lint": "npm --prefix backend run lint && npm --prefix frontend run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2"
+  },
+  "lint-staged": {
+    "backend/src/**/*.{ts,tsx}": [
+      "npm --prefix backend run lint -- --fix",
+      "npm --prefix backend test -- --bail --findRelatedTests"
+    ],
+    "frontend/src/**/*.{ts,tsx,js,jsx}": [
+      "npm --prefix frontend run lint",
+      "npm --prefix frontend run test -- --passWithNoTests --run"
+    ]
+  }
+}
