@@ -1,0 +1,17 @@
+:root {
+  color-scheme: light dark;
+}
+
+body {
+  margin: 0;
+  font-family: 'Rawline', Arial, sans-serif;
+  background-color: var(--background, #f5f5f5);
+}
+
+a {
+  color: inherit;
+}
+
+main {
+  min-height: 80vh;
+}
